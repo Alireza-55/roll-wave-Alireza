@@ -1,0 +1,23 @@
+PROGRAM FlowOverWeir
+  IMPLICIT NONE
+
+
+  REAL :: b=3.0, U=9.8, yn=0.3, S=0.1, g=9.81, Q, y_critical, Xbar , Xbar_Shock , dis_Shock ,dis_roll,Ybar_max,sigmay_max
+  real :: down_depth_max,Froude
+
+    Q = b * yn * U
+    Froude = U/(sqrt(g*yn))
+    !Froude is 5.7 and S=0.1 so the rest based on the tables are :
+    Xbar = 1200
+    dis_roll = Xbar*yn
+    Xbar_Shock = 2000
+    dis_Shock = Xbar_Shock*yn
+    Ybar_max=1.4*yn
+    sigmay_max=0.15*yn
+    down_depth_max = Ybar_max +(2.58*sigmay_max)
+
+    print*,"Distance to roll wave",dis_roll,"m"
+    print*,"Distance to Shock wave",dis_Shock,"m"
+    print*,"Maximum downstream depth flow",down_depth_max,"m"
+    print*,"An estimation of the flow ",Q,"m^3 / s"
+end program FlowOverWeir
